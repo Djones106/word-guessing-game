@@ -8,39 +8,31 @@ const buttons = document.querySelectorAll('#qwerty');
 const phrase = document.querySelector('#phrase');
 const startGame = document.querySelector('.btn_reset');
 const overlay = document.querySelector('#overlay');
-const phraseArray = getRandomPhraseAsArray(arr);
+const phraseArray = getRandomPhraseAsArray(phrases);
 
 const missed = 0;
 
-startGame.addEventListener('click', () => {
+overlay.addEventListener('click', (e) => {
+    e.preventDefault();
     overlay.style.display = 'none';
 });
 
-phrases = ['Smooth Criminal', 
+const phrases = ['Smooth Criminal', 
           'Kim Possible',
           'Zero to Hero',
           'Headstrong'];
 
-function getRandomPhraseAsArray(arr){
+//console.log(phrases); testing phrases are showing
+
+ function getRandomPhraseAsArray(phrases){
     const randomPhrase = phrases[Math.floor(Math.random() * phrases.length)];
-    const randomArray = randomPhrase.split(' ');
-    return randomArray;
+    const split = randomPhrase.split(phrases);
+    return split;
     
-}
+};
+ console.log(getRandomPhraseAsArray); //testing random word is chosen
 
-console.log(getRandomPhraseAsArray);
+// getRandomPhraseAsArray(phrases);
 
-getRandomPhraseAsArray(phrases);
-
-function addPhraseToDisplay (phraseArray){
-    phrase.forEach(e) => {
-        const character = document.querySelector('input')
-        const newItem = document.querySelector('#phase ul');
-        
-        newItem.insertAdjacentHTML(
-            'afterbegin',
-            `<li>${character.value}</li>`
-        );
-    });
 
 
