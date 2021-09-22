@@ -1,10 +1,10 @@
 // get needed elements from html
 
-let buttons = document.querySelectorAll('#qwerty');
+let qwerty = document.querySelectorAll('#qwerty');
 let phrase = document.getElementById('phrase');
 let startGame = document.querySelector('.btn_reset');
 let overlay = document.getElementById('overlay');
-
+let buttons = document.getElementById('qwerty').querySelectorAll('button')
 
 
 let missed = 0;
@@ -56,7 +56,49 @@ function getRandomPhraseAsArray () {
 
 //checking letters to see if they are in the random phrase 
 
+function checkLetter (buttons) {
+    let li = document.getElementsByClassName('letter')
+    let match = null;
+ 
+    for (let i = 0; i < li.length; i++) {
+        let match = array[0];
+        
+    
+    if (buttons.textContent === li.length[i].textContent) {
+        li[i].classList.add('show');
+        match = li[i].textContent;
+        
+    
+        }
+    } 
+
+    return match;
+};
+
+// activate buttons
+
 
 
 //activating keyboard on screen to reconized when clicked
+
+for (let i = 0; i< buttons.length; i++){
+buttons[i].addEventListener('click', e =>{
+    let buttons = e.target;
+    buttons.classList.add('select');
+
+    if (buttons.classList.contains('select')){
+        buttons.disabled = true;
+    }
+    
+    qwerty.forEach(button => {
+        button.removeAttribute('disabled');
+        button.classList.remove('select')
+    })
+    //let checkLetter = checkLetter(buttons);
+
+    //if letter is incorrect
+
+})
+
+}
 
