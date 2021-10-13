@@ -1,27 +1,28 @@
 // get needed elements from html
 
-let qwerty = document.querySelectorAll('#qwerty');
-let phrase = document.getElementById('phrase');
-let startGame = document.querySelector('.btn_reset');
-let overlay = document.getElementById('overlay');
-let buttons = document.getElementById('qwerty').querySelectorAll('button')
+const phrase = document.getElementById('phrase');
+const startButton = document.querySelector('.btn_reset');
+const qwerty = document.getElementById('qwerty').querySelectorAll('button');
+const overlay = document.getElementById('overlay');
 
-
+//missed counter
 let missed = 0;
+
 // created phrases to quess
 const phrases = ['Smooth Criminal', 
           'Kim Possible',
           'Zero to Hero',
           'Headstrong'];
 
+
 // created event listner to start the game and show overlay screen
 overlay.addEventListener('click', () => {
-    missed = 0;
-    overlay.style.display = "none";
+    overlay.style.display = 'none';
     });
 
 //console.log(phrases); testing phrases are showing
-//created function to get a random phrase and break it into individual letters
+
+//function to get a random phrase and break it into individual letters
 function getRandomPhraseAsArray () {
     let randomIndex = Math.floor(Math.random() * phrases.length);
     let randomPhrase = phrases[randomIndex];
@@ -33,12 +34,12 @@ function getRandomPhraseAsArray () {
 
 
  //testing for random word 
-
 //console.log(getRandomPhraseAsArray())
-//created a function to dsiplay empty boxes to quess letters
+
+//function to display empty boxes to quess letters
  function addPhraseToDisplay(randomPhrase){
     for (let i = 0; i < randomPhrase.length; i++) {
-        let li = document.createElement("LI");
+        let li = document.createElement('LI');
         let ul = document.querySelector('ul');
 
         li.textContent = randomPhrase[i];
@@ -61,17 +62,17 @@ function checkLetter (buttons) {
     let match = null;
  
     for (let i = 0; i < li.length; i++) {
-        let match = array[0];
+        let matchedLeter = li[i];
         
     
-    if (buttons.textContent === li.length[i].textContent) {
+    if (matchedLetter.textContent === buttons) {
         li[i].classList.add('show');
-        match = li[i].textContent;
-        
-    
-        }
-    } 
+        match += button;
+        match.textContent = "show";
+   
+        } else {};
 
+    }
     return match;
 };
 
@@ -81,24 +82,30 @@ function checkLetter (buttons) {
 
 //activating keyboard on screen to reconized when clicked
 
-for (let i = 0; i< buttons.length; i++){
-buttons[i].addEventListener('click', e =>{
-    let buttons = e.target;
-    buttons.classList.add('select');
 
-    if (buttons.classList.contains('select')){
-        buttons.disabled = true;
-    }
-    
-    qwerty.forEach(button => {
-        button.removeAttribute('disabled');
-        button.classList.remove('select')
-    })
+qwerty.addEventListener('click', (e) =>{
+   
     //let checkLetter = checkLetter(buttons);
 
     //if letter is incorrect
 
 })
 
+function checkWin(){
+    let letter = document.getElementsByClassName('letter')
+    let show = document.getElementsByClassName('show')
+
+    if (letter.lenght === show.lenght){
+        overlay.className = 'win';
+        overlay.innerText = 'YAY! You Guessed it!';
+        overlay.style.display = 'flex';
+        overlay.append(startGame);
+    }else if (missed > 4){
+        overlay.className = 'lose';
+        overlay.innerText = 'Sorry! Try Again!'
+        overlay.style.display = 'flex';
+        overlay.append(startGame);
+    };
+        
 }
 
