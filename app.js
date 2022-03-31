@@ -58,7 +58,7 @@ function getRandomPhraseAsArray () {
 //checking letters to see if they are in the random phrase 
 
 function checkLetter (buttons) {
-    let li = document.getElementsByClassName('letter')
+    const allLetters = document.getElementsByClassName('letter')
     let match = null;
  
     for (let i = 0; i < li.length; i++) {
