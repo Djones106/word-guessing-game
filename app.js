@@ -1,10 +1,10 @@
 // get needed elements from html
 
-const phrase = document.getElementById('phrase');
+const phrase = document.querySelector('phrase');
 const startButton = document.querySelector('.btn_reset');
-const qwerty = document.getElementById('qwerty').querySelectorAll('button');
-const overlay = document.getElementById('overlay');
-
+const qwerty = document.querySelector('qwerty').querySelectorAll('button');
+const overlay = document.querySelector('overlay');
+const button = document.getElementsByTagName('button')
 //missed counter
 let missed = 0;
 
@@ -16,7 +16,7 @@ const phrases = ['Smooth Criminal',
 
 
 // created event listner to start the game and show overlay screen
-overlay.addEventListener('click', () => {
+overlay.addEventListener('click', function() {
     overlay.style.display = 'none';
     });
 
@@ -39,7 +39,7 @@ function getRandomPhraseAsArray () {
 //function to display empty boxes to quess letters
  function addPhraseToDisplay(randomPhrase){
     for (let i = 0; i < randomPhrase.length; i++) {
-        let li = document.createElement('LI');
+        let li = document.createElement('Li');
         let ul = document.querySelector('ul');
 
         li.textContent = randomPhrase[i];
